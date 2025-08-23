@@ -1,4 +1,10 @@
 import os
+import sys
+import io
+
+# Chuyển stdout sang UTF-8
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 
 # Đường dẫn file (nằm cùng workspace)
 inventory_file = "inventory.txt"
