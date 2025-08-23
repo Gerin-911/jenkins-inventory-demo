@@ -1,19 +1,21 @@
-import csv
 import os
 
-inventory_file = "inventory.txt"   # hoặc đường dẫn thực tế
-report_file = "reports/daily_report.csv"
+# File nằm cùng cấp với workspace
+inventory_file = "inventory.txt"
+report_file = "report.txt"  # cùng cấp với inventory.txt và orders.txt
 
-# Tạo thư mục nếu chưa tồn tại
-os.makedirs(os.path.dirname(report_file), exist_ok=True)
-
+# Đọc dữ liệu inventory
+inventory = {}
 with open(inventory_file, "r", encoding="utf-8") as f:
-    inventory = [line.strip().split(",") for line in f]
+    for line in f:
+        product, qty = line.strip().split(",")
+        inventory[product] = int(qty)
 
-# Xuất báo cáo dạng CSV
-with open(report_file, "w", encoding="utf-8", newline="") as f:
-    writer = csv.writer(f)
-    writer.writerow(["Sản phẩm", "Số lượng còn lại"])
-    writer.writerows(inventory)
+# Ghi báo cáo, ghi đè mỗi lần chạy
+with open(report_file, "w", encoding="utf-8") as f:
+    f.write("Sản phẩm | Số lượng còn lại\n")
+    f.write("-" * 30 + "\n")
+    for product, qty in inventory.items():
+        f.write(f"{product} | {qty}\n")
 
-print(f"Báo cáo đã tạo: {report_file}")
+print(f"Báo cáo đã tạo/ghi đè: {os.path.abspath(report_file)}")
