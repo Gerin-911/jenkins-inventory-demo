@@ -1,1 +1,3 @@
+sản phẩm A,10
+sản phẩm B,5
 
