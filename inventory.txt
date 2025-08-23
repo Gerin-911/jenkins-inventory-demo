@@ -1,3 +1,7 @@
-Apple,100
-Banana,100
-Orange,100
+# inventory.py
+inventory = {
+    "Apple": 50,
+    "Banana": 30,
+    "Orange": 20
+}
+
