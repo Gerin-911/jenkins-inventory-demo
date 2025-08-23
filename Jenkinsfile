@@ -10,21 +10,21 @@ pipeline {
         stage('Update Inventory') {
             steps {
                 echo "Trừ kho dựa trên đơn hàng..."
-                sh 'python3 scripts/update_inventory.py'
+                bat 'python3 scripts/update_inventory.py'
             }
         }
 
         stage('Generate Report') {
             steps {
                 echo "Tạo báo cáo cuối ngày..."
-                sh 'python3 scripts/generate_report.py'
+                bat 'python3 scripts/generate_report.py'
             }
         }
 
         stage('Send Notification (demo)') {
             steps {
                 echo "Gửi báo cáo cho nhà cung cấp (giả lập)..."
-                sh 'cat reports/daily_report.csv'
+                bat 'cat reports/daily_report.csv'
             }
         }
     }
