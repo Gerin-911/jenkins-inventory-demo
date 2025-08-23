@@ -16,7 +16,7 @@ if os.path.exists(inventory_file):
 # Ghi báo cáo
 with open(report_file, "w", encoding="utf-8", newline="") as f:
     writer = csv.writer(f)
-    writer.writerow(["Sản phẩm", "Số lượng còn lại"])
+    writer.writerow(["Product", "Remaining Quantity"])  # đổi tiêu đề sang ASCII
     writer.writerows(inventory)
 
-print(f"Báo cáo đã tạo: {report_file}")
+print(f"Report has been created: {report_file}")  # đổi thông báo sang ASCII
