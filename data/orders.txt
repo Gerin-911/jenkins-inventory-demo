@@ -1,1 +1,4 @@
+order1,sản phẩm A,2
+order2,sản phẩm B,1
+order3,sản phẩm A,3
 
