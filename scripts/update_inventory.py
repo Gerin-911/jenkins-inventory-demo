@@ -4,11 +4,17 @@ inventory_file = "data/inventory.txt"
 orders_file = "data/orders.txt"
 
 # Đọc dữ liệu kho
-inventory = {}
-with open(inventory_file, "r", encoding="utf-8") as f:
+with open("orders.txt", "r") as f:
     for line in f:
-        product, qty = line.strip().split(",")
-        inventory[product] = int(qty)
+        line = line.strip()
+        if not line:
+            continue  # bỏ qua dòng trống
+        parts = line.split(",")
+        if len(parts) != 2:
+            print(f"⚠️ Bỏ qua dòng không hợp lệ: {line}")
+            continue
+        product, qty = parts
+        print(f"Trừ {qty} sản phẩm {product} trong kho")
 
 # Đọc đơn hàng và trừ kho
 with open(orders_file, "r", encoding="utf-8") as f:
