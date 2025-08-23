@@ -2,8 +2,8 @@ import csv
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-inventory_file = "data/inventory.txt"
-orders_file = "data/orders.txt"
+inventory_file = "inventory.txt"
+orders_file = "orders.txt"
 
 # Đọc dữ liệu kho
 with open("orders.txt", "r") as f:
