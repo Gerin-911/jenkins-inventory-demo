@@ -10,14 +10,14 @@ pipeline {
         stage('Update Inventory') {
             steps {
                 echo "Trừ kho dựa trên đơn hàng..."
-                bat 'python3 scripts/update_inventory.py'
+                bat 'python scripts/update_inventory.py'
             }
         }
 
         stage('Generate Report') {
             steps {
                 echo "Tạo báo cáo cuối ngày..."
-                bat 'python3 scripts/generate_report.py'
+                bat 'python scripts/generate_report.py'
             }
         }
 
