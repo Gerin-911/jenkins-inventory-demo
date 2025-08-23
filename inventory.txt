@@ -1,7 +1,3 @@
-# inventory.py
-inventory = {
-    "Apple": 50,
-    "Banana": 30,
-    "Orange": 20
-}
-
+Apple,50
+Banana,30
+Orange,20
