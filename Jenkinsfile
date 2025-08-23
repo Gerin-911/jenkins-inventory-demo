@@ -1,3 +1,6 @@
+
+bat 'chcp 65001' // đổi sang UTF-8
+bat '"C:/Users/lieuv/AppData/Local/Programs/Python/Python313/python.exe" scripts/update_inventory.py'
 pipeline {
     agent any
 
