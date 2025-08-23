@@ -1,4 +1,6 @@
 import csv
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 
 inventory_file = "data/inventory.txt"
 orders_file = "data/orders.txt"
