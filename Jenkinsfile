@@ -43,5 +43,10 @@ pipeline {
         bat "\"${env.PYTHON}\" inventory.py"
             }
         }
+        stage('Archive Letters') {
+    steps {
+        archiveArtifacts artifacts: 'letter.txt', followSymlinks: false
+            }
+        }
     }
 }
