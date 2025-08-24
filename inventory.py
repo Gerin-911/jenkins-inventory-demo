@@ -45,6 +45,6 @@ if letters:
         for letter in letters:
             f.write(letter)
             f.write("\n" + "="*50 + "\n\n")  # phân cách giữa các thư
-    print(f"✅ Letters have been generated and saved in {letter_file}")
+    print(f"Letters have been generated and saved in {letter_file}")
 else:
     print("All items are stable (>= 100). No letters needed.")
