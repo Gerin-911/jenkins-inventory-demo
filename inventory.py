@@ -2,30 +2,11 @@ import os
 
 inventory_file = "inventory.txt"
 letter_file = "letter.txt"
+target_qty = 100
 
-def generate_supplier_letter(item_name, current_qty, target_qty=100):
-    return f"""
-Subject: Request for Stable Supply of {item_name}
+# Doc inventory
+items_to_order = []
 
-Dear Supplier,
-
-I hope this message finds you well.
-
-Our current stock for **{item_name}** is only {current_qty} units.
-We kindly request your support to ensure that our inventory is
-always maintained at a minimum of {target_qty} units.
-
-Please arrange for regular supply to keep our stock stable.
-
-Thank you very much for your cooperation.
-
-Best regards,
-Inventory Management Team
-"""
-
-letters = []
-
-# Đọc file inventory.txt (giả sử mỗi dòng có dạng: item_name,quantity)
 if os.path.exists(inventory_file):
     with open(inventory_file, "r", encoding="utf-8") as f:
         for line in f:
@@ -34,17 +15,25 @@ if os.path.exists(inventory_file):
                 item_name, qty_str = parts
                 try:
                     qty = int(qty_str)
-                    if qty < 100:
-                        letters.append(generate_supplier_letter(item_name, qty))
+                    if qty < target_qty:
+                        need = target_qty - qty
+                        items_to_order.append((item_name, need))
                 except ValueError:
                     continue
 
-# Ghi tất cả thư vào file letter.txt
-if letters:
+# Tao noi dung thu duy nhat
+if items_to_order:
+    letter_content = "Chao nha cung cap,\n\n"
+    letter_content += f"Ben toi can bo sung cac san pham sau de duy tri ton kho {target_qty}:\n\n"
+
+    for item, need in items_to_order:
+        letter_content += f"- {item}: {need} cai\n"
+
+    letter_content += "\nMong quy cong ty ho tro.\n\nTran trong,\nInventory Team"
+
     with open(letter_file, "w", encoding="utf-8") as f:
-        for letter in letters:
-            f.write(letter)
-            f.write("\n" + "="*50 + "\n\n")  # phân cách giữa các thư
-    print(f"Letters have been generated and saved in {letter_file}")
+        f.write(letter_content)
+
+    print(f"Letter has been generated and saved in {letter_file}")
 else:
-    print("All items are stable (>= 100). No letters needed.")
+    print("Tat ca san pham deu >= 100. Khong can tao thu.")
