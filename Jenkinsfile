@@ -37,5 +37,10 @@ pipeline {
                 echo "✅ Pipeline hoàn tất. Kiểm tra ${REPORT_FILE} để xem báo cáo."
             }
         }
+        stage('Check Inventory and Generate Letter') {
+    steps {
+        sh 'python3 inventory.py'
+            }
+        }
     }
 }
